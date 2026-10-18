@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="it" class="is-intro" data-variant="zg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Приглашение на торжество в честь регистрации брака ЗАГС+банкет | 26.12.26</title>
+    <meta name="description" content="Приглашаем вас разделить с нами радость нашего свадебного дня в Казани. 26 Декабря 2026." />
+    <meta name="theme-color" content="#F7F2EA" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./favicon.png" />
+
+    <!-- Preload critico busta d'apertura (< 1.2 MB bundle, effettivo ~310 KB) -->
+    <link rel="preload" as="image" href="./assets/envelope-closed.webp" type="image/webp" />
+    <link rel="preload" as="image" href="./assets/envelope-open.webp" type="image/webp" />
+    <link rel="preload" as="image" href="./assets/card-blank.webp" type="image/webp" />
+    <link rel="preload" as="image" href="./assets/seal.webp" type="image/webp" />
+    <link rel="preload" as="image" href="./assets/paper-texture.webp" type="image/webp" />
+
+    <!-- Open Graph / Anteprima Messaggerie (Telegram, WhatsApp, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Электронное приглашение" />
+    <meta property="og:url" content="https://sdongiovanni1-prog.github.io/s-n-wedding-zg/" />
+    <meta property="og:title" content="Приглашение на торжество в честь регистрации брака ЗАГС+банкет | 26.12.26" />
+    <meta property="og:description" content="Приглашаем вас разделить с нами радость нашего свадебного дня в Казани. 26 Декабря 2026." />
+    <meta property="og:image" content="https://sdongiovanni1-prog.github.io/s-n-wedding-zg/preview.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="560" />
+    <meta property="og:image:height" content="560" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Приглашение на торжество в честь регистрации брака ЗАГС+банкет | 26.12.26" />
+    <meta name="twitter:description" content="Приглашаем вас разделить с нами радость нашего свадебного дня в Казани. 26 Декабря 2026." />
+    <meta name="twitter:image" content="https://sdongiovanni1-prog.github.io/s-n-wedding-zg/preview.png" />
+    <script type="module" crossorigin src="./assets/index-BXxNqfKz.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BmdTrFS2.css">
+      <meta name="site-variant" content="zg" />
+  </head>
+  <body class="envelope-locked">
+    <!-- Sfondo Unico e Continuo Carta Naturale Fixed -->
+    <div id="global-paper-bg" class="global-paper-bg" aria-hidden="true"></div>
+
+    <!-- Neve su Canvas a Pieno Schermo (3 livelli di profondità, colore adattivo) -->
+    <canvas id="snow-canvas" class="snow-canvas" aria-hidden="true"></canvas>
+
+
+    <!-- 0. BUSTA D'APERTURA (Schermata Iniziale 100dvh) -->
+    <div id="envelope-screen" role="dialog" aria-modal="true" aria-label="Busta d'invito al matrimonio">
+      <div class="envelope-stage" id="envelope-stage">
+        <div class="envelope-wrapper" id="envelope-wrapper" tabindex="0" role="button" data-i18n-attr="aria-label:envelope.tapToOpen">
+          <!-- Ombra a terra della busta -->
+          <div class="envelope-ground-shadow" aria-hidden="true"></div>
+
+          <!-- L1 (fondo): envelope-open (interno e retro della busta) -->
+          <div class="env-layer env-layer-back">
+            <img src="./assets/envelope-open.webp" alt="" draggable="false" />
+          </div>
+
+          <!-- L2: card-blank (biglietto dentro la busta) -->
+          <div class="env-layer env-layer-card" id="envelope-card">
+            <img src="./assets/card-blank.webp" class="card-paper-img" alt="" draggable="false" />
+            <div class="card-inner-content">
+              <span class="card-monogram">S &amp; N</span>
+              <span class="card-title" data-i18n="hero.badge">Invito di Nozze</span>
+              <span class="card-names" id="card-names-display">Simone &amp; Nailya</span>
+              <div class="card-divider" aria-hidden="true"></div>
+              <span class="card-date" data-i18n="hero.date">26.12.2026</span>
+            </div>
+          </div>
+
+          <!-- L3: tasca frontale (envelope-open con clip-path a V) -->
+          <div class="env-layer env-layer-pocket" id="envelope-pocket">
+            <img src="./assets/envelope-open.webp" alt="" draggable="false" />
+            <div class="pocket-v-shadow" aria-hidden="true"></div>
+          </div>
+
+          <!-- L4: patta 3D (da envelope-closed ritagliata a triangolo) -->
+          <div class="env-layer env-layer-flap" id="envelope-flap">
+            <div class="flap-3d-inner">
+              <div class="flap-front">
+                <img src="./assets/envelope-closed.webp" alt="" draggable="false" />
+              </div>
+              <div class="flap-back" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- L5: sigillo di ceralacca (intero all'inizio, poi si spezza in due metà) -->
+          <div class="env-seal-container" id="envelope-seal">
+            <div class="seal-whole" id="seal-whole">
+              <img src="./assets/seal.webp" alt="" draggable="false" />
+              <div class="seal-sheen" aria-hidden="true"></div>
+            </div>
+            <div class="seal-piece seal-left" id="seal-left">
+              <img src="./assets/seal.webp" alt="" draggable="false" />
+            </div>
+            <div class="seal-piece seal-right" id="seal-right">
+              <img src="./assets/seal.webp" alt="" draggable="false" />
+            </div>
+            <div class="seal-shards" id="seal-shards" aria-hidden="true"></div>
+          </div>
+
+          <!-- Overlay SVG di debug per verificare l'allineamento dei poligoni (attivo con ?debug=1) -->
+          <svg class="env-debug-overlay" id="env-debug-svg" viewBox="0 0 1600 884" aria-hidden="true">
+            <polygon id="debug-flap-poly" points="" fill="rgba(0, 255, 120, 0.3)" stroke="#00ff77" stroke-width="3" />
+            <polygon id="debug-pocket-poly" points="" fill="rgba(0, 150, 255, 0.3)" stroke="#0099ff" stroke-width="3" />
+          </svg>
+        </div>
+
+        <!-- Indicatore tocca per aprire in corsivo piccolo con pulsazione lenta -->
+        <div class="envelope-tap-prompt" id="envelope-tap-prompt">
+          <span class="tap-text" data-i18n="envelope.tapToOpen">Tocca per aprire</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENUTO PRINCIPALE PAGINA -->
+    <main id="main-content">
+      <div class="page-container">
+        <!-- 1. HERO SECTION -->
+        <section id="hero" data-section="hero" aria-labelledby="hero-title">
+          <!-- Barra controlli Hero: Audio + Scelta Lingua -->
+          <div class="hero-top-controls" id="hero-top-controls">
+            <!-- Pulsante audio colonna sonora -->
+            <button
+              type="button"
+              class="hero-audio-btn is-muted"
+              id="hero-audio-btn"
+              aria-label="Attiva musica"
+              aria-pressed="false"
+              title="Attiva musica"
+            >
+              <!-- Icona musica attiva (altoparlante + onde sonore) -->
+              <svg class="audio-icon audio-icon-playing" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path class="audio-wave audio-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path class="audio-wave audio-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              </svg>
+              <!-- Icona musica disattivata (altoparlante barrato) -->
+              <svg class="audio-icon audio-icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+              </svg>
+            </button>
+
+            <!-- Scelta lingua / Переключатель языка -->
+            <div class="hero-lang-switch" id="hero-lang-switch" role="group" aria-label="Selezione lingua / Выбор языка">
+              <button type="button" class="lang-btn" data-lang="ru" aria-label="Русский">RU</button>
+              <span class="lang-divider" aria-hidden="true">|</span>
+              <button type="button" class="lang-btn" data-lang="it" aria-label="Italiano">IT</button>
+            </div>
+          </div>
+
+          <!-- Ramo invernale innevato dall'angolo in alto a sinistra (originale) -->
+          <div class="hero-snow-branch" id="hero-snow-branch" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/snow-branch-sm.webp" />
+              <img src="./assets/snow-branch.webp" alt="" draggable="false" />
+            </picture>
+          </div>
+
+          <!-- Ramo invernale innevato dall'angolo in basso a destra (Photo 1) -->
+          <div class="hero-snow-branch-br" id="hero-snow-branch-br" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/snow-branch-sm.webp" />
+              <img src="./assets/snow-branch.webp" alt="" draggable="false" />
+            </picture>
+          </div>
+
+          <div class="hero-stage">
+            <!-- Ghirlanda floreale circolare grande che fiorisce -->
+            <div class="hero-wreath-wrapper" id="hero-wreath-wrap">
+              <picture>
+                <source media="(max-width: 600px)" srcset="./assets/wreath-sm.webp" />
+                <img src="./assets/wreath.webp" id="hero-wreath-img" alt="" draggable="false" />
+              </picture>
+            </div>
+
+            <div class="hero-inner">
+              <h1 class="hero-monogram" aria-label="S &amp; N"><span class="mono-char">S</span><span class="mono-amp" aria-hidden="true">&amp;</span><span class="mono-char">N</span></h1>
+              <p class="hero-title" id="hero-title" data-i18n="hero.weAreGettingMarried">Ci sposiamo</p>
+              <p class="hero-names" id="hero-names-display">Simone &amp; Nailya</p>
+
+              <div class="hero-meta-divider" aria-hidden="true"></div>
+
+              <div class="hero-date" data-i18n="hero.date">26.12.26</div>
+              <div class="hero-city" data-i18n="hero.city">Kazan, Russia</div>
+            </div>
+          </div>
+
+          <div class="hero-scroll-indicator" aria-hidden="true">
+            <span class="scroll-line"></span>
+            <span class="scroll-label" data-i18n="hero.scrollPrompt">Scorri per scoprire</span>
+          </div>
+        </section>
+
+        <!-- 2. FRASE POETICA 1 (RITRATTO SPOSI & INVITO AGLI OSPITI) -->
+        <section id="quote-1" data-section="quote1" class="invite-section-luxury" aria-label="Invito al matrimonio">
+          <!-- 1) Foto degli sposi in cornice passepartout luxury come le locations -->
+          <div class="invite-photo-container">
+            <div class="couple-portrait-frame" id="couple-portrait">
+              <div class="couple-passepartout-border">
+                <div class="couple-img-wrap">
+                  <picture>
+                    <source media="(max-width: 600px)" srcset="./assets/couple-portrait-sm.webp" />
+                    <img src="./assets/couple-portrait.webp" alt="Simone &amp; Nailya" class="couple-portrait-img" width="1024" height="1024" loading="eager" />
+                  </picture>
+                  <div class="location-img-vignette" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2) Scritta invito agli ospiti -->
+          <div class="invite-text-container">
+            <h2 class="invite-greeting" id="invite-greeting" data-i18n="invite.greeting">Gentile Ospite!</h2>
+            <p class="invite-body" id="invite-body" data-i18n="invite.text">Vi invitiamo a festeggiare il nostro matrimonio. Saremo felici di condividere questo giorno con voi.</p>
+          </div>
+        </section>
+
+        <!-- 3. COUNTDOWN (NUMERI GRANDI BORDEAUX, LINEE ORO, BOUQUET DI ELLEBORO) -->
+        <section id="countdown" data-section="countdown" class="countdown-section-luxury" aria-label="Conto alla rovescia">
+          <!-- Bouquet di elleboro ancorato all'angolo in basso a destra -->
+          <div class="cd-hellebore-wrap" id="cd-hellebore" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/hellebore-bouquet-sm.webp" />
+              <img src="./assets/hellebore-bouquet.webp" alt="" draggable="false" />
+            </picture>
+          </div>
+
+          <div class="countdown-inner">
+            <p class="countdown-lead-title" id="countdown-lead-title" data-i18n="countdown.leadTitle">
+              До нашей свадьбы осталось:
+            </p>
+
+            <!-- 3) Timer -->
+            <div id="countdown-wrapper">
+              <div class="countdown-editorial-grid" id="cd-grid">
+                <div class="cd-unit">
+                  <span class="countdown-number" id="cd-days">00</span>
+                  <span class="countdown-label" data-i18n="countdown.days">Giorni</span>
+                </div>
+
+                <div class="cd-gold-separator" aria-hidden="true"></div>
+
+                <div class="cd-unit">
+                  <span class="countdown-number" id="cd-hours">00</span>
+                  <span class="countdown-label" data-i18n="countdown.hours">Ore</span>
+                </div>
+
+                <div class="cd-gold-separator" aria-hidden="true"></div>
+
+                <div class="cd-unit">
+                  <span class="countdown-number" id="cd-minutes">00</span>
+                  <span class="countdown-label" data-i18n="countdown.minutes">Minuti</span>
+                </div>
+
+                <div class="cd-gold-separator" aria-hidden="true"></div>
+
+                <div class="cd-unit">
+                  <span class="countdown-number" id="cd-seconds">00</span>
+                  <span class="countdown-label" data-i18n="countdown.seconds">Secondi</span>
+                </div>
+              </div>
+              <div class="countdown-finished" id="cd-finished" data-i18n="countdown.celebrating"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Divisore dorato di lusso -->
+        <div class="lux-divider" aria-hidden="true"></div>
+
+        <!-- 4. PROGRAMMA (TIMELINE VERTICALE CON LINEA ORO E RAMO DI CAMELIA) -->
+        <section id="program" data-section="program" class="program-section-luxury" aria-labelledby="program-title">
+          <!-- Ramo floreale in alto a sinistra che bilancia l'elleboro del countdown -->
+          <div class="section-edge-decor program-decor-tl" id="program-decor-tl" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/camellia-branch-sm.webp" />
+              <img src="./assets/camellia-branch.webp" alt="" draggable="false" />
+            </picture>
+          </div>
+
+          <!-- Ramo di camelia laterale che cresce con lo scroll (sinistra) -->
+          <div class="program-camellia-wrap" id="program-camellia" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/camellia-branch-sm.webp" />
+              <img src="./assets/camellia-branch.webp" alt="" draggable="false" />
+            </picture>
+          </div>
+
+          <!-- Ramo floreale sulla destra che incornicia la sezione -->
+          <div class="section-edge-decor program-decor-right" id="program-decor-right" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/camellia-branch-sm.webp" />
+              <img src="./assets/camellia-branch.webp" alt="" draggable="false" />
+            </picture>
+          </div>
+
+          <div class="program-container">
+            <h2 class="program-editorial-title" id="program-title" data-i18n="program.title">Il Programma della Giornata</h2>
+
+            
+
+                        <div class="program-timeline-curved-wrap" id="program-timeline-zg" data-variant-only="zg">
+              <svg class="timeline-curved-svg" id="timeline-curved-svg" aria-hidden="true">
+                <path class="curved-track-bg" id="curved-track-bg" />
+                <path class="curved-track-progress" id="curved-track-progress" />
+                <g class="curved-nodes-layer" id="curved-nodes-layer"></g>
+                <g class="curved-heart-marker" id="curved-heart-marker">
+                  <g class="curved-heart-inner" transform="translate(-11, -11) scale(0.92)">
+                    <path class="curved-heart-shape" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </g>
+                </g>
+              </svg>
+
+              <div class="curved-timeline-items" id="curved-timeline-items">
+                <!-- Voci del programma con curve e icone iniettate dinamicamente da timeline.js -->
+              </div>
+            </div>
+                      </div>
+
+          <!-- Ramo floreale in basso a destra che accompagna la chiusura del programma -->
+          <div class="section-edge-decor program-decor-br" id="program-decor-br" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/amaryllis-fir-sm.webp" />
+              <img src="./assets/amaryllis-fir.webp" alt="" draggable="false" />
+            </picture>
+          </div>
+        </section>
+
+        <!-- Divisore dorato di lusso -->
+        <div class="lux-divider" aria-hidden="true"></div>
+
+        <!-- 6. LOCATION (RISTORANTE CON PASSEPARTOUT E ILLUSTRAZIONE ACQUERELLO) -->
+        <section id="location" data-section="location" class="location-section-luxury" aria-labelledby="location-title">
+          <div class="section-header-luxury">
+            <span class="section-badge" data-i18n="location.badge">Il Luogo</span>
+            <h2 class="section-editorial-title" id="location-title" data-i18n="location.title">La Location</h2>
+          </div>
+
+                    <div class="location-venue-block location-venue-chasha" data-variant-only="zg">
+            <div class="location-passepartout-frame">
+              <div class="location-passepartout-border">
+                <div class="location-img-wrap location-img-wrap-chasha">
+                  <picture>
+                    <source media="(max-width: 600px)" srcset="./assets/chasha-sm.webp" />
+                    <img src="./assets/chasha.webp" alt="«Центр семьи Казан» (Чаша)" width="1024" height="682" loading="lazy" />
+                  </picture>
+                  <div class="location-img-vignette" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="location-info-luxury">
+              <h3 class="location-venue-name" data-i18n="location.chasha.name">«Центр семьи Казан» (Чаша)</h3>
+              <p class="location-venue-address" data-i18n="location.chasha.address">Казань, улица Сибгата Хакима 4.</p>
+              <p class="location-venue-parking" data-i18n="location.chasha.parking">Имеется платная парковка</p>
+
+              <div class="lux-divider" aria-hidden="true"></div>
+
+              <p class="location-venue-desc" data-i18n="location.chasha.desc">
+                Казан - символ домашнего очага. Именно здесь мы зажжем огонь нашей семьи
+              </p>
+
+              <!-- Pulsante mappa esterna Yandex Maps (Chasha) -->
+              <div class="location-actions-luxury">
+                <a id="btn-yandex-chasha" href="https://yandex.ru/maps/-/CXB-E-9y" target="_blank" rel="noopener noreferrer" class="btn-shop-messenger btn-shop-yandex" data-i18n-attr="aria-label:location.openYandex" aria-label="Apri in Yandex Maps">
+                  <svg class="shop-messenger-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="10" r="3"/>
+                    <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                  </svg>
+                  <span data-i18n="location.openYandex">Apri in Yandex Maps</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Divisore dorato luxury tra le due location -->
+            <div class="lux-divider location-inter-venue-divider" aria-hidden="true"></div>
+          </div>
+          
+          <div class="location-passepartout-frame">
+            <div class="location-passepartout-border">
+              <div class="location-img-wrap">
+                <picture>
+                  <source media="(max-width: 600px)" srcset="./assets/location-sm.webp" />
+                  <img src="./assets/location.webp" alt="Банкетный зал «Чинаякъ»" width="1024" height="768" loading="lazy" />
+                </picture>
+                <div class="location-img-vignette" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-info-luxury">
+            <h3 class="location-venue-name" id="location-name-display">Sala Banchetti «Chinayak»</h3>
+            <p class="location-venue-address" id="location-address-display">Kazan, via Chernyshevskogo 29a, 3° piano</p>
+            <p class="location-venue-halal" id="location-halal-display" data-i18n="location.halal">Меню и напитки будут представлены в халяль - формате</p>
+            <p class="location-venue-parking" id="location-parking-display">È disponibile un parcheggio gratuito: ingresso tra gli edifici Chernyshevskogo 29a e Moskovskaya 25</p>
+
+            <div class="lux-divider" aria-hidden="true"></div>
+
+            <p class="location-venue-desc" data-i18n="location.desc">
+              Uno spazio caldo, luminoso e accogliente nel centro storico dell'innevata Kazan.
+            </p>
+
+            <!-- Pulsante mappa esterna Yandex Maps -->
+            <div class="location-actions-luxury">
+              <a id="btn-yandex" href="https://yandex.ru/maps/-/CXB-EO0y" target="_blank" rel="noopener noreferrer" class="btn-shop-messenger btn-shop-yandex" aria-label="Apri in Yandex Maps">
+                <svg class="shop-messenger-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="10" r="3"/>
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                </svg>
+                <span data-i18n="location.openYandex">Apri in Yandex Maps</span>
+              </a>
+            </div>
+
+            <!-- Decorazione floreale sotto apri in yandex (richiesta utente) -->
+            <div class="transition-flourish-wrap location-bottom-flourish" aria-hidden="true">
+              <picture>
+                <source media="(max-width: 600px)" srcset="./assets/camellia-branch-sm.webp" />
+                <img src="./assets/camellia-branch.webp" alt="" class="transition-flourish-img location-flourish-flipped" draggable="false" />
+              </picture>
+            </div>
+          </div>
+        </section>
+
+        <!-- Divisore sottile luxury -->
+        <div class="lux-divider" aria-hidden="true"></div>
+
+        <!-- 7. DRESS CODE (PALETTE ACQUERELLO CON MEDAGLIONI ORO) -->
+        <section id="dress-code" data-section="dressCode" class="dresscode-section-luxury" aria-labelledby="dress-code-title">
+          <div class="section-header-luxury">
+            <span class="section-badge" data-i18n="dressCode.badge">Stile &amp; Atmosfera</span>
+            <h2 class="section-editorial-title" id="dress-code-title" data-i18n="dressCode.title">Dress Code</h2>
+          </div>
+
+          <div class="dresscode-content-luxury">
+            <p class="dresscode-editorial-desc" data-i18n="dressCode.desc">
+              Saremo felici di vedervi nei vostri abiti più eleganti. I colori sono a vostra scelta, l'importante sono il vostro buonumore e i vostri sorrisi.
+            </p>
+
+            <p class="dresscode-shoes-note" data-i18n="dressCode.shoesNote">
+              Пожалуйста, не забудьте сменную обувь
+            </p>
+          </div>
+        </section>
+
+        <!-- Divisore dorato di lusso -->
+        <div class="lux-divider" aria-hidden="true"></div>
+
+        <!-- 5. SEZIONE SCURA FULL-BLEED CON GARDEN VIDEO (FRASE DI TRANSIZIONE) -->
+        <section id="quote-2" data-section="quote2" class="garden-dark-section" aria-label="Citazione poetica di transizione">
+          <div class="garden-video-bg" aria-hidden="true">
+            <video
+              id="garden-video"
+              class="garden-video-el"
+              poster="./assets/garden-poster.webp"
+              preload="auto"
+              muted
+              loop
+              playsinline
+            >
+              <source src="./assets/garden.mp4" type="video/mp4" />
+              <source src="./assets/garden.webm" type="video/webm" />
+            </video>
+            <div class="garden-video-overlay" aria-hidden="true"></div>
+          </div>
+
+          <div class="garden-quote-content">
+            <div class="lux-divider" aria-hidden="true"></div>
+            <blockquote class="garden-quote-text" id="quote-2-text" data-i18n="quote2.text">
+              L'amore è l'unico fiore che cresce anche sotto la neve.
+            </blockquote>
+            <div class="lux-divider" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <!-- Divisore dorato di lusso -->
+        <div class="lux-divider" aria-hidden="true"></div>
+
+        <!-- 5b. DEPOSITO SALONE FLOREALE (SUBITO DOPO IL VIDEO) -->
+        <section id="deposit" data-section="deposit" class="deposit-section-luxury" aria-labelledby="deposit-title">
+          <div class="deposit-card-luxury">
+            <h3 class="deposit-title" id="deposit-title" data-i18n="deposit.title">Если вы желаете подарить цветы</h3>
+            
+            <p class="deposit-intro" data-i18n="deposit.intro">
+              Мы трепетно относимся к традициям и знаем, что цветы — это знак внимания. Но наша свадьба в декабре, и мы переживаем, что букеты замерзнут по дороге или завянут в первый же час.
+            </p>
+            
+            <p class="deposit-body" data-i18n="deposit.body">
+              Если вы хотите порадовать нас цветами, воспользуйтесь нашим цветочным депозитом в магазине [Название]. Мы закажем доставку домой после свадьбы и насладимся ими в тепле.
+            </p>
+
+            <div class="deposit-action-wrap">
+              <span class="deposit-action-label" data-i18n="deposit.actionLabel">Ссылка для оплаты депозита:</span>
+              <a
+                href="https://qr.nspk.ru/AS2A000HGMUGSPDS81KA7DSAJCR0PS9N"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-deposit-gold"
+                id="btn-deposit"
+              >
+                <!-- Icona bouquet floreale elegante SVG -->
+                <svg class="btn-deposit-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2a3 3 0 0 0-3 3c0 1.3.8 2.4 2 2.8V12h2V7.8A3 3 0 0 0 12 2z"/>
+                  <path d="M6.5 5.5a3 3 0 0 0-2.3 4.9L8 12.5l1.4-1.4L6.1 7.8A3 3 0 0 0 6.5 5.5z"/>
+                  <path d="M17.5 5.5a3 3 0 0 1 2.3 4.9L16 12.5l-1.4-1.4 3.3-3.3c.4-.7.6-1.5.6-2.3z"/>
+                  <path d="M10 13l-2 8h8l-2-8"/>
+                  <path d="M9 16.5h6"/>
+                </svg>
+                <span data-i18n="deposit.btnText">Вместо букета</span>
+              </a>
+            </div>
+
+            <!-- Assistenza e Contatto Diretto Negozio Floreale -->
+            <div class="deposit-support-wrap">
+              <p class="deposit-support-text" data-i18n="deposit.supportText">
+                Если у вас есть вопросы по оплате или заказу цветов, вы можете связаться с цветочным магазином напрямую в одном из мессенджеров:
+              </p>
+
+              <div class="deposit-messengers-group">
+                <a
+                  href="https://wa.me/79950950605?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%B3%D0%BE%D1%81%D1%82%D1%8C%20%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D1%8B%20%D0%A1%D0%B8%D0%BC%D0%BE%D0%BD%D0%B5%20%D0%B8%20%D0%9D%D0%B0%D0%B8%D0%BB%D0%B8%2026%20%D0%B4%D0%B5%D0%BA%D0%B0%D0%B1%D1%80%D1%8F%20%F0%9F%92%8D%20%D0%A5%D0%BE%D1%82%D0%B5%D0%BB%D0%BE%D1%81%D1%8C%20%D0%B1%D1%8B%20%D1%83%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%82%D1%8C%20%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%86%D0%B2%D0%B5%D1%82%D0%BE%D0%B2%20%F0%9F%8C%B8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-shop-messenger btn-shop-whatsapp"
+                  id="btn-deposit-whatsapp"
+                  aria-label="WhatsApp"
+                  data-i18n-attr="title:deposit.whatsappVpn"
+                >
+                  <svg class="shop-messenger-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                  </svg>
+                  <span data-i18n="deposit.whatsappShop">WhatsApp</span>
+                </a>
+
+                <a
+                  href="https://max.ru/u/f9LHodD0cOI81ZWQReKJcbjb8Sh7V4hjnxCYqpGG6di1wZz-tE85oKP_Kvc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-shop-messenger btn-shop-max"
+                  id="btn-deposit-max"
+                  aria-label="Max"
+                >
+                  <svg class="shop-messenger-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <span data-i18n="deposit.maxShop">Max</span>
+                </a>
+              </div>
+
+              <!-- Info VPN per WhatsApp -->
+              <p class="whatsapp-vpn-info">
+                <svg class="vpn-info-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span data-i18n="deposit.whatsappVpn">Если ссылка не открывается, используйте VPN</span>
+              </p>
+            </div>
+
+            <p class="deposit-disclaimer" data-i18n="deposit.disclaimer">
+              Важно: это просто альтернатива букету, а не обязательный взнос. Сумма — на ваше усмотрение.
+            </p>
+          </div>
+        </section>
+
+        <!-- Divisore sottile luxury -->
+        <div class="lux-divider" aria-hidden="true"></div>
+
+        <!-- 8. CONFERMA DI PRESENZA (RSVP CON AMARILLIDE ANCORATA AL BORDO) -->
+        <section id="rsvp" data-section="rsvp" class="rsvp-section-luxury" aria-labelledby="rsvp-title">
+          <div class="section-header-luxury rsvp-header-luxury">
+            <h2 class="section-editorial-title" id="rsvp-title" data-i18n="rsvp.title">Подтверждение присутствия</h2>
+          </div>
+
+          <!-- 1. BLOCCO CALENDARIO MATRIMONIO CON GHIRLANDA ESTERNA SOPRA -->
+          <div class="calendar-standalone-container">
+            <!-- Ghirlanda floreale posta FUORI SOPRA al calendario -->
+            <div class="calendar-garland-wrap" aria-hidden="true">
+              <img src="./assets/camellia-branch-sm.webp" alt="" class="calendar-garland-img" draggable="false" />
+            </div>
+
+            <!-- Riquadro separato: si vede SOLO il calendario -->
+            <div class="rsvp-calendar-card">
+              <h3 class="calendar-month-title" id="calendar-month-name" data-i18n="rsvp.monthName">Декабрь</h3>
+              
+              <div class="calendar-weekdays" aria-hidden="true">
+                <span data-i18n="rsvp.weekdayMon">ПН</span>
+                <span data-i18n="rsvp.weekdayTue">ВТ</span>
+                <span data-i18n="rsvp.weekdayWed">СР</span>
+                <span data-i18n="rsvp.weekdayThu">ЧТ</span>
+                <span data-i18n="rsvp.weekdayFri">ПТ</span>
+                <span data-i18n="rsvp.weekdaySat">СБ</span>
+                <span data-i18n="rsvp.weekdaySun">ВС</span>
+              </div>
+
+              <div class="calendar-grid" role="grid" aria-label="Calendario Dicembre 2026">
+                <!-- Riga 1: 1 Dicembre è Martedì -->
+                <span class="calendar-empty"></span>
+                <span class="calendar-day">1</span>
+                <span class="calendar-day">2</span>
+                <span class="calendar-day">3</span>
+                <span class="calendar-day">4</span>
+                <span class="calendar-day">5</span>
+                <span class="calendar-day">6</span>
+
+                <!-- Riga 2 -->
+                <span class="calendar-day">7</span>
+                <span class="calendar-day">8</span>
+                <span class="calendar-day">9</span>
+                <span class="calendar-day">10</span>
+                <span class="calendar-day">11</span>
+                <span class="calendar-day">12</span>
+                <span class="calendar-day">13</span>
+
+                <!-- Riga 3 -->
+                <span class="calendar-day">14</span>
+                <span class="calendar-day">15</span>
+                <span class="calendar-day">16</span>
+                <span class="calendar-day">17</span>
+                <span class="calendar-day">18</span>
+                <span class="calendar-day">19</span>
+                <span class="calendar-day">20</span>
+
+                <!-- Riga 4: 26 Dicembre con Cuore (Data Matrimonio) -->
+                <span class="calendar-day">21</span>
+                <span class="calendar-day">22</span>
+                <span class="calendar-day">23</span>
+                <span class="calendar-day">24</span>
+                <span class="calendar-day">25</span>
+                <div class="calendar-day calendar-day-heart" aria-label="26 Dicembre - Data del Matrimonio">
+                  <svg class="heart-svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                    <path d="M16 28.5C16 28.5 3 20.5 3 11.5C3 6.8 6.8 3 11.5 3C14.2 3 15.5 4.5 16 5.2C16.5 4.5 17.8 3 20.5 3C25.2 3 29 6.8 29 11.5C29 20.5 16 28.5 16 28.5Z"/>
+                  </svg>
+                  <span class="heart-day-num">26</span>
+                </div>
+                <span class="calendar-day">27</span>
+
+                <!-- Riga 5 -->
+                <span class="calendar-day">28</span>
+                <span class="calendar-day">29</span>
+                <span class="calendar-day">30</span>
+                <span class="calendar-day">31</span>
+                <span class="calendar-empty"></span>
+                <span class="calendar-empty"></span>
+                <span class="calendar-empty"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. RIQUADRO SEPARATO: DATA CONFERMA (10 NOVEMBRE) E CONTATTI TELEGRAM/WHATSAPP -->
+          <div class="rsvp-card-luxury">
+            <!-- Avviso data conferma presenza -->
+            <div class="rsvp-deadline-luxury">
+              <p class="rsvp-deadline-label" data-i18n="rsvp.deadlineNotice">
+                Пожалуйста, подтвердите ваше участие до
+              </p>
+              <p class="rsvp-deadline-date" id="rsvp-deadline-display" data-i18n="rsvp.deadlineDate">10 Ноября 2026</p>
+            </div>
+
+            <!-- Bottoni contatti diretti: Telegram e WhatsApp nello stile compatto elegante -->
+            <div class="rsvp-actions-luxury">
+              <a id="btn-rsvp-telegram" href="https://t.me/+79673690134" target="_blank" rel="noopener noreferrer" class="btn-shop-messenger btn-shop-telegram" aria-label="Telegram">
+                <svg class="shop-messenger-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+                <span data-i18n="rsvp.telegramBtn">Написать в Telegram</span>
+              </a>
+
+              <a id="btn-rsvp-whatsapp" href="https://wa.me/79673690134" target="_blank" rel="noopener noreferrer" class="btn-shop-messenger btn-shop-whatsapp" aria-label="WhatsApp" data-i18n-attr="title:rsvp.whatsappVpn">
+                <svg class="shop-messenger-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                <span data-i18n="rsvp.whatsappBtn">Написать в WhatsApp</span>
+              </a>
+            </div>
+
+            <!-- Info VPN per WhatsApp -->
+            <p class="whatsapp-vpn-info">
+              <svg class="vpn-info-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span data-i18n="rsvp.whatsappVpn">Если ссылка не открывается, используйте VPN</span>
+            </p>
+          </div>
+
+          <!-- Decorazione floreale tra RSVP e Footer (Photo 3) -->
+          <div class="transition-flourish-wrap transition-flourish-rsvp" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 600px)" srcset="./assets/camellia-branch-sm.webp" />
+              <img src="./assets/camellia-branch.webp" alt="" class="transition-flourish-img" draggable="false" />
+            </picture>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- 9. FOOTER (EDITORIALE DI CHIUSURA CON MONOGRAMMA DORATO) -->
+    <footer id="footer" data-section="footer" class="footer-luxury">
+      <!-- Decorazione floreale ancorata in basso a destra -->
+      <div class="section-edge-decor footer-decor-br" id="footer-decor" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 600px)" srcset="./assets/hellebore-bouquet-sm.webp" />
+          <img src="./assets/hellebore-bouquet.webp" alt="" draggable="false" />
+        </picture>
+      </div>
+
+      <div class="footer-content-wrap">
+        <div class="footer-monogram-luxury" aria-hidden="true">S &amp; N</div>
+        <p class="footer-waiting-luxury" data-i18n="footer.waiting">Vi aspettiamo con tutto il cuore</p>
+        <p class="footer-final-quote-luxury" data-i18n="footer.finalQuote">
+          Per fare di questo giorno un ricordo da custodire insieme.
+        </p>
+        <p class="footer-couple-names-luxury" id="footer-names-display">Simone &amp; Nailya</p>
+
+        <button type="button" class="footer-back-to-top-luxury" id="footer-back-to-top" aria-label="Torna all'inizio della pagina">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"/>
+          </svg>
+          <span data-i18n="footer.backToTop">Torna all'inizio</span>
+        </button>
+      </div>
+    </footer>
+
+  </body>
+</html>
